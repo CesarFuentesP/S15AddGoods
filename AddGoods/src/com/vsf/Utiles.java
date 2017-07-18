@@ -40,6 +40,7 @@ import org.xml.sax.SAXException;
 import com.vsf.S15.AddGoods.*;
 
 
+
 public class Utiles {
 
 	// Comprueba si es la primera linea
@@ -490,15 +491,20 @@ public class Utiles {
 	}
 
 	// Añade atributos a Fee
-	public static void addFeeAtrib(FeeComplexType feeElement, String f_FEE_ID, String f_FEE_Type, BigDecimal F_FEE_Amount, String f_FEE_ProfitCenter,
-			String f_FEE_RefAccount, String f_FEE_POBName) {
-		// TODO Auto-generated method stub
-		feeElement.setFeeID(f_FEE_ID);
-		feeElement.setFeeType(f_FEE_Type);
-		feeElement.setFeeAmount(F_FEE_Amount);
-		feeElement.setProfitCenter(f_FEE_ProfitCenter);
-		feeElement.setReferenceAccount(f_FEE_RefAccount);
-		feeElement.setPOBName(f_FEE_POBName);
+	public static void addFeeAtrib(FeeComplexType Fee, 
+			String f_FEE_id, String f_FEE_type, String f_FEE_amount, 
+			String f_FEE_profitCenter, String f_FEE_referenceAccount, 
+			String f_FEE_POBname) throws DatatypeConfigurationException{
+
+		BigDecimal Importe = new BigDecimal(f_FEE_amount);
+
+		if (f_FEE_id.length()!=0) Fee.setFeeID(f_FEE_id);
+		if (f_FEE_type.length()!=0) Fee.setFeeType(f_FEE_type);
+		if (f_FEE_amount.length()!=0) Fee.setFeeAmount(Importe);
+		if (f_FEE_profitCenter.length()!=0) Fee.setProfitCenter(f_FEE_profitCenter);
+		if (f_FEE_referenceAccount.length()!=0) Fee.setReferenceAccount(f_FEE_referenceAccount);
+		if (f_FEE_POBname.length()!=0) Fee.setPOBName(f_FEE_POBname);
+
 	}
 
 	// Añade atributos a la cabecera

@@ -224,7 +224,7 @@ public class Principal {
 		try {
 			BufferedReader reader =	new BufferedReader(new	FileReader(Fichero));
 			while((linea = reader.readLine())!=null) {
-				Campos = linea.split(";"); 
+				Campos = linea.split(";", -1); 
 				if (!aContratcID.equals(Campos[f_eventContractID].trim())) {
 					NumContratos ++;
 					
@@ -520,8 +520,7 @@ public class Principal {
 					if (!Fee_ID.equals(Campos[f_FEE_ID])||!aContratcID.equals(Campos[f_eventContractID].trim())){
 						FeeElement = new FeeComplexType();
 					}
-					BigDecimal ImporteFee = new BigDecimal(Campos[f_FEE_Amount]);
-					Utiles.addFeeAtrib(FeeElement, Campos[f_FEE_ID], Campos[f_FEE_Type], ImporteFee,
+					Utiles.addFeeAtrib(FeeElement, Campos[f_FEE_ID], Campos[f_FEE_Type], Campos[f_FEE_Amount],
 							Campos[f_FEE_ProfitCenter], Campos[f_FEE_RefAccount], Campos[f_FEE_POBName]);
 					FeeList.getFee().add(FeeElement);
 					/////////////////////
